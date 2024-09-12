@@ -1,0 +1,159 @@
+:root {
+
+    --gray-10: #F2F2F3;
+    --gray-20: #D1D2D2;
+    --gray-30: #97989A;
+    --gray-40: #2F353F;
+    --gray-50: #21252C;
+    --gray-60: #1B1D22;
+    --gray-70: #16181D;
+
+    --orange-10: #FFF5F2;
+    --orange-20: #FEDCD0;
+    --orange-30: #FDB393;
+    --orange-40: #FC7C05;
+    --orange-50: #CE6504;
+    --orange-60: #924803;
+
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    background-color: var(--gray-10);
+}
+
+.wrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calcBase {
+    width: 404px;
+    background-color: var(--gray-70);
+    display: flex;
+    flex-direction: column;
+    border-radius: 32px;
+    border: 2px solid white;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    width: 100%;
+    padding: 48px;
+    overflow: hidden;
+}
+
+.screen > p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    max-width: 300px;
+}
+
+#operation {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--gray-30);
+    height: 30px;
+}
+
+#result {
+    font-size: 48px;
+    font-weight: 800;
+    height: 60px;
+    color: #ffffff;
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background-color: var(--gray-60);
+    padding: 4px;
+    border-radius: 32px;
+}
+
+.row {
+    display: flex;
+    gap: 4px;
+    flex-direction: row;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96px;
+    height: 96px;
+    background-color: var(--gray-50);
+    color: var(--gray-30);
+    font-size: 24px;
+    font-weight: 500;
+    font-family: "Outfit", sans-serif;
+}
+
+button:hover {
+    background-color: var(--gray-40);
+    color: var(--gray-20);
+    cursor: pointer;
+}
+
+button:active {
+    background-color: var(--gray-70);
+}
+
+button:focus {
+    /* border: 1px solid var(--gray-30); */
+    outline-color: var(--gray-50);
+}
+
+.dark {
+    background-color: var(--gray-60);
+    border-radius: 26px 0 0 0;
+}
+
+#divide {
+    border-radius: 0 26px 0 0;
+}
+
+.orange {
+    background-color: var(--orange-40);
+    color: white;
+    border-radius: 0 0 26px 0;
+}
+
+.orange:hover {
+    background-color: var(--orange-50);
+    color: white;
+}
+
+.orange:active {
+    background-color: var(--orange-60);
+}
+
+#zero {
+    flex-grow: 2;
+    border-radius: 0 0 0 26px;
+}
+
+.hide {
+    display: none;
+}
