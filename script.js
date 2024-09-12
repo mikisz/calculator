@@ -21,8 +21,10 @@ negativeBTN.addEventListener("click", () => {
     if (screenResult.textContent == '0') { 
 
     } else { 
-        let result = parseFloat(screenResult.textContent) *= -1;
-        screenResult.textContent = result.toString();
+        let result = parseFloat(screenResult.textContent) * -1;
+        result = result.toString();
+        result = parseFloat(result);
+        screenResult.textContent = result.toString();    
     }
 })
 
@@ -94,6 +96,7 @@ function numberPress(num) {
 
 function operatorPress(operator) {
     activeOperator = operator;
+    activeNum = secondNum;
 };
 
 function operate(operator, firstNum, secondNum) {
