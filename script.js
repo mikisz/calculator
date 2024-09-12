@@ -35,7 +35,6 @@ keyboard.addEventListener("click", (event) => {
 
         }
         
-
     } else if (target.classList.contains("operator")) {
 
         if (activeOperator === null) {
@@ -56,11 +55,29 @@ keyboard.addEventListener("click", (event) => {
 
     } else if (target.id === 'negative') {
 
-        // console.log(target.id);
+        if (firstNum !== null && secondNum === null) {
+
+            firstNum *= -1;
+            display.textContent = Number(firstNum);
+
+        } else if (secondNum !== null) {
+
+            secondNum *= -1;
+            display.textContent = Number(secondNum);
+
+        }
 
     } else if (target.id === 'percent') {
 
-        // console.log(target.id);
+        if (firstNum !== null && secondNum === null) {
+
+            firstNum *= 0.01;
+
+        } else if (secondNum !== null) {
+
+            secondNum *= 0.01;
+
+        }
 
     } else if (target.id === 'dot') {
 
@@ -76,9 +93,12 @@ keyboard.addEventListener("click", (event) => {
 
 })
 
-function operate(operator, x = 0, y = x) {
+function operate(operator, firstNum, secondNum) {
 
     let sum;
+
+    x = Number(firstNum) || 0;
+    y = Number(secondNum) || Number(firstNum);
 
     switch (operator) {
 
@@ -101,8 +121,9 @@ function operate(operator, x = 0, y = x) {
     }
 
     firstNum = sum;
-    secondNum = null;
     display.textContent = Number(firstNum);
+
+    secondNum = null;    
     activeOperator = null;
 
 }
