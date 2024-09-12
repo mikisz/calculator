@@ -5,14 +5,15 @@ let firstNum;
 let secondNum;
 let activeOperator;
 
-let activeNum = firstNum;
+let activeNum = 'firstNum';
 
 const acBTN = document.querySelector("#ac");
 acBTN.addEventListener("click", () => {
 
     screenResult.textContent = '0';
-    firstNum = 0;
-    activeNum = firstNum;
+    firstNum = null;
+    secondNum = null;
+    activeNum = 'firstNum';
 
 })
 
@@ -50,6 +51,7 @@ const nineBTN = document.querySelector("#nine");
 nineBTN.addEventListener("click", () => numberPress('9'));
 
 const multiplyBTN = document.querySelector("#multiply");
+multiplyBTN.addEventListener("click", () => operatorPress('multiply'));
 
 const fourBTN = document.querySelector("#four");
 fourBTN.addEventListener("click", () => numberPress('4'));
@@ -61,6 +63,7 @@ const sixBTN = document.querySelector("#six");
 sixBTN.addEventListener("click", () => numberPress('6'));
 
 const subtractBTN = document.querySelector("#subtract");
+subtractBTN.addEventListener("click", () => operatorPress('subtract'));
 
 const oneBTN = document.querySelector("#one");
 oneBTN.addEventListener("click", () => numberPress('1'));
@@ -72,6 +75,7 @@ const threeBTN = document.querySelector("#three");
 threeBTN.addEventListener("click", () => numberPress('3'));
 
 const addBTN = document.querySelector("#add");
+addBTN.addEventListener("click", () => operatorPress('add'));
 
 const zeroBTN = document.querySelector("#zero");
 zeroBTN.addEventListener("click", () => numberPress(0));
@@ -88,6 +92,15 @@ dotBTN.addEventListener("click", () => {
 });
 
 const resultBTN = document.querySelector("#getResult");
+resultBTN.addEventListener("click", () => {
+
+    if (firstNum === null || activeOperator === null) {
+
+    } else {
+        operate(activeOperator, firstNum, secondNum);
+    }
+
+});
 
 function numberPress(num) {
     if (screenResult.textContent === '0') { screenResult.textContent = num;
@@ -95,8 +108,18 @@ function numberPress(num) {
 };
 
 function operatorPress(operator) {
-    activeOperator = operator;
-    activeNum = secondNum;
+    if (activeOperator == null) {
+        activeOperator = operator;
+        activeNum = 'secondNum';
+        firstNum = parseFloat(screenResult.textContent);
+        screenResult.textContent = '';
+    } else if (activeOperator !== null) {
+
+        operate(activeOperator, firstNum, secondNum);
+
+        activeOperator = operator;
+        activeNum = 'secondNum';
+    }
 };
 
 function operate(operator, firstNum, secondNum) {
@@ -125,6 +148,9 @@ function operate(operator, firstNum, secondNum) {
 
     }
 
-    return sum;
+    screenResult.textContent = sum;
+    firstNum = sum;
+    activeOperator = null;
+    secondNum = null;
 
 };
