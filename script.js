@@ -112,7 +112,7 @@ function operate(operator, firstNum, secondNum) {
 
         case '-':
             sum = x - y;
-            break;
+                break;
 
         case '+':
             sum = x + y;
